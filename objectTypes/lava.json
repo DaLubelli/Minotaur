@@ -1,0 +1,26 @@
+{
+	"name": "Lava",
+	"plugin-id": "TiledBg",
+	"sid": 909196400951794,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 194467076400678
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 300,
+		"height": 300,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "png",
+		"exportQuality": 0.8,
+		"imageSpriteId": 7646045,
+		"useCollisionPoly": true
+	}
+}

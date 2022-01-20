@@ -1,0 +1,13 @@
+{
+	"name": "Doors",
+	"plugin-id": "TiledBg",
+	"sid": 935195985707770,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"DestructibleLavaYellow",
+		"DestructibleLavaGreen",
+		"DestructibleLavaBlue"
+	]
+}

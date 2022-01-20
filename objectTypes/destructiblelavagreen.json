@@ -1,0 +1,26 @@
+{
+	"name": "DestructibleLavaGreen",
+	"plugin-id": "TiledBg",
+	"sid": 505648986673020,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 301464068866353
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 300,
+		"height": 300,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "png",
+		"exportQuality": 0.8,
+		"imageSpriteId": 559657,
+		"useCollisionPoly": true
+	}
+}

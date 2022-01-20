@@ -1,0 +1,416 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Screentime",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 533773740157242
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Behaviours",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 592161715452194,
+							"parameters": {
+								"interval-seconds": "1.0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Sprite",
+							"sid": 915446668318337,
+							"parameters": {
+								"object": "TrackPoint",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 352256707564994
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "TrackPoint",
+							"sid": 726690717583365
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 935559282664636,
+							"parameters": {
+								"variable": "Screentime",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 367721049400038
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 310940358172218,
+							"parameters": {
+								"variable": "Screentime",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "TrackPoint",
+							"sid": 514582426474224
+						}
+					],
+					"sid": 906720258394109
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 815049662592570,
+							"parameters": {
+								"interval-seconds": "0.5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 836162136203093,
+							"parameters": {
+								"variable": "Screentime",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 132885171279524
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-los-to-object",
+							"objectClass": "Minotaur",
+							"sid": 648808078991804,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"object": "Sprite",
+								"image-point": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-object",
+							"objectClass": "Minotaur",
+							"sid": 844235496109964,
+							"behaviorType": "MoveTo",
+							"parameters": {
+								"object": "TrackPoint",
+								"image-point": "0",
+								"mode": "direct"
+							}
+						}
+					],
+					"sid": 129849431540431
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-path-found",
+							"objectClass": "Minotaur",
+							"sid": 302860431521254,
+							"behaviorType": "Pathfinding"
+						}
+					],
+					"actions": [
+						{
+							"id": "move-along-path",
+							"objectClass": "Minotaur",
+							"sid": 784104891505395,
+							"behaviorType": "Pathfinding"
+						}
+					],
+					"sid": 380853945829188
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "Minotaur",
+							"sid": 163426023722210,
+							"behaviorType": "MoveTo"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Particles",
+							"sid": 598241386251492,
+							"parameters": {
+								"x": "Minotaur.X",
+								"y": "Minotaur.Y"
+							}
+						},
+						{
+							"id": "set-spraying",
+							"objectClass": "Particles",
+							"sid": 634975063181533,
+							"parameters": {
+								"state": "spraying"
+							}
+						}
+					],
+					"sid": 594298611453519
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-arrived",
+							"objectClass": "Minotaur",
+							"sid": 906805630775281,
+							"behaviorType": "MoveTo"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-spraying",
+							"objectClass": "Particles",
+							"sid": 657938473037051,
+							"parameters": {
+								"state": "not-spraying"
+							}
+						}
+					],
+					"sid": 365542873536988
+				}
+			],
+			"sid": 850270345202845
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Game design",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 870345491891984
+						}
+					],
+					"actions": [
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "Minotaur",
+							"sid": 578885401129544,
+							"parameters": {
+								"collisions": "disabled"
+							}
+						}
+					],
+					"sid": 708418352464562
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Sprite",
+							"sid": 151885796424053,
+							"parameters": {
+								"object": "Yellow"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Yellow",
+							"sid": 923676122891731
+						},
+						{
+							"id": "destroy",
+							"objectClass": "DestructibleLavaYellow",
+							"sid": 208544558048287
+						}
+					],
+					"sid": 210003825267473
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Sprite",
+							"sid": 634348801345725,
+							"parameters": {
+								"object": "Green"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Green",
+							"sid": 394127090207414
+						},
+						{
+							"id": "destroy",
+							"objectClass": "DestructibleLavaGreen",
+							"sid": 193707488637512
+						}
+					],
+					"sid": 971359199998301
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Sprite",
+							"sid": 706908594375240,
+							"parameters": {
+								"object": "Blue"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Blue",
+							"sid": 321927436670618
+						},
+						{
+							"id": "destroy",
+							"objectClass": "DestructibleLavaBlue",
+							"sid": 179029614144631
+						}
+					],
+					"sid": 913525660497539
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Sprite",
+							"sid": 958441731707077,
+							"parameters": {
+								"object": "Minotaur"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "flash",
+							"objectClass": "Sprite",
+							"sid": 191052060375011,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.0"
+							}
+						}
+					],
+					"sid": 747722470257111
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-flash-ended",
+							"objectClass": "Sprite",
+							"sid": 625717886331118,
+							"behaviorType": "Flash"
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Sprite",
+							"sid": 123334181431321
+						}
+					],
+					"sid": 105003639851130
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-destroyed",
+							"objectClass": "Sprite",
+							"sid": 472762230543117
+						}
+					],
+					"actions": [
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 182769971909285
+						}
+					],
+					"sid": 918056125778046
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-outside-layout",
+							"objectClass": "Sprite",
+							"sid": 141388262480414
+						}
+					],
+					"actions": [
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 433159284349848
+						}
+					],
+					"sid": 791054379559794
+				}
+			],
+			"sid": 111643264608883
+		}
+	],
+	"sid": 909972086833767
+}
