@@ -119,25 +119,20 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "has-los-to-object",
-							"objectClass": "Minotaur",
-							"sid": 648808078991804,
-							"behaviorType": "LineOfSight",
-							"parameters": {
-								"object": "Sprite",
-								"image-point": "0"
-							}
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 719333531791860
 						}
 					],
 					"actions": [
 						{
-							"id": "move-to-object",
+							"id": "move-to-position",
 							"objectClass": "Minotaur",
-							"sid": 844235496109964,
+							"sid": 477643678405341,
 							"behaviorType": "MoveTo",
 							"parameters": {
-								"object": "TrackPoint",
-								"image-point": "0",
+								"x": "TrackPoint.X",
+								"y": "TrackPoint.Y",
 								"mode": "direct"
 							}
 						}
@@ -168,10 +163,10 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-moving",
+							"id": "is-moving-along-path",
 							"objectClass": "Minotaur",
-							"sid": 163426023722210,
-							"behaviorType": "MoveTo"
+							"sid": 425909356750264,
+							"behaviorType": "Pathfinding"
 						}
 					],
 					"actions": [
@@ -201,8 +196,8 @@
 						{
 							"id": "on-arrived",
 							"objectClass": "Minotaur",
-							"sid": 906805630775281,
-							"behaviorType": "MoveTo"
+							"sid": 626968139590894,
+							"behaviorType": "Pathfinding"
 						}
 					],
 					"actions": [
@@ -216,6 +211,81 @@
 						}
 					],
 					"sid": 365542873536988
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "TrackPoint",
+							"sid": 500712439515046
+						}
+					],
+					"actions": [
+						{
+							"id": "find-path",
+							"objectClass": "Minotaur",
+							"sid": 513056064972782,
+							"behaviorType": "Pathfinding",
+							"parameters": {
+								"x": "TrackPoint.X",
+								"y": "TrackPoint.Y"
+							}
+						}
+					],
+					"sid": 377815844063299
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-failed-to-find-path",
+							"objectClass": "Minotaur",
+							"sid": 174859443335854,
+							"behaviorType": "Pathfinding"
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-position",
+							"objectClass": "Minotaur",
+							"sid": 907672340475742,
+							"behaviorType": "MoveTo",
+							"parameters": {
+								"x": "Sprite.X",
+								"y": "Sprite.Y",
+								"mode": "direct"
+							}
+						}
+					],
+					"sid": 184978971738261
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 442140928182708,
+							"parameters": {
+								"interval-seconds": "random(5)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-position",
+							"objectClass": "Minotaur",
+							"sid": 550761594457155,
+							"behaviorType": "MoveTo",
+							"parameters": {
+								"x": "Sprite.X",
+								"y": "Sprite.Y",
+								"mode": "direct"
+							}
+						}
+					],
+					"sid": 950646511585995
 				}
 			],
 			"sid": 850270345202845
@@ -246,7 +316,8 @@
 							}
 						}
 					],
-					"sid": 708418352464562
+					"sid": 708418352464562,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -331,10 +402,10 @@
 					"conditions": [
 						{
 							"id": "on-collision-with-another-object",
-							"objectClass": "Sprite",
-							"sid": 958441731707077,
+							"objectClass": "Minotaur",
+							"sid": 549814076496603,
 							"parameters": {
-								"object": "Minotaur"
+								"object": "Sprite"
 							}
 						}
 					],

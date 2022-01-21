@@ -1091,7 +1091,7 @@
 						"initially-visible": true,
 						"initial-animation": "Animation 1",
 						"initial-frame": 0,
-						"enable-collisions": true,
+						"enable-collisions": false,
 						"live-preview": false
 					},
 					"uid": 2,
@@ -1228,8 +1228,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 368,
-						"y": 267,
+						"x": 217,
+						"y": 112,
 						"width": 28.603687669099525,
 						"height": 28.603687669099525,
 						"originX": 0.5,
