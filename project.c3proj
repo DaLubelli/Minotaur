@@ -1,7 +1,7 @@
 {
 	"projectFormatVersion": 1,
 	"savedWithRelease": 27602,
-	"name": "New project",
+	"name": "Boss",
 	"runtime": "c3",
 	"useWorker": "auto",
 	"bundleAddons": false,
@@ -16,8 +16,8 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Particles",
-			"name": "Particles",
+			"id": "Keyboard",
+			"name": "Keyboard",
 			"author": "Scirra",
 			"version": "r276.2",
 			"bundled": false
@@ -31,17 +31,17 @@
 			"bundled": false
 		},
 		{
-			"type": "behavior",
-			"id": "EightDir",
-			"name": "8 Direction",
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
 			"author": "Scirra",
 			"version": "r276.2",
 			"bundled": false
 		},
 		{
 			"type": "behavior",
-			"id": "Pathfinding",
-			"name": "Pathfinding",
+			"id": "Platform",
+			"name": "Platform",
 			"author": "Scirra",
 			"version": "r276.2",
 			"bundled": false
@@ -56,6 +56,14 @@
 		},
 		{
 			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"version": "r276.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "LOS",
 			"name": "Line of sight",
 			"author": "Scirra",
@@ -64,44 +72,32 @@
 		},
 		{
 			"type": "behavior",
-			"id": "Flash",
-			"name": "Flash",
+			"id": "Pathfinding",
+			"name": "Pathfinding",
 			"author": "Scirra",
-			"version": "r276.2",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "solid",
-			"name": "Solid",
-			"author": "Scirra",
-			"version": "r276.2",
-			"bundled": false
-		},
-		{
-			"type": "effect",
-			"id": "pulse",
-			"name": "Pulse",
-			"author": "Danguafer/Silexars",
 			"version": "r276.2",
 			"bundled": false
 		}
 	],
-	"uniqueId": "ul5t1ug9unz",
+	"uniqueId": "ieg0cs42702",
 	"objectTypes": {
 		"items": [
-			"Minotaur",
 			"Sprite",
-			"TrackPoint",
-			"Particles",
-			"Pattern",
-			"Lava",
-			"DestructibleLavaYellow",
-			"DestructibleLavaBlue",
-			"Yellow",
-			"Blue",
-			"Green",
-			"DestructibleLavaGreen"
+			"Boss",
+			"Keyboard",
+			"Background",
+			"Pavimento",
+			"EmptyBar",
+			"StaminaBar",
+			"CounterBar",
+			"Sprite2",
+			"TiledBackground",
+			"MainCharacterBar",
+			"TiledBackground3",
+			"TiledBackground2",
+			"Sprite3",
+			"Sprite4",
+			"FPSMonitor"
 		],
 		"subfolders": []
 	},
@@ -109,8 +105,7 @@
 	"containers": [],
 	"families": {
 		"items": [
-			"Keys",
-			"Doors"
+			"LifeBar"
 		],
 		"subfolders": []
 	},
@@ -150,41 +145,9 @@
 		"icon": {
 			"items": [
 				{
-					"name": "icon-512.png",
-					"type": "image/png",
-					"sid": 511159002826790,
-					"icon-info": {
-						"purpose": "app-icon"
-					}
-				},
-				{
 					"name": "icon-256.png",
 					"type": "image/png",
-					"sid": 505352794225924,
-					"icon-info": {
-						"purpose": "app-icon"
-					}
-				},
-				{
-					"name": "loading-logo.png",
-					"type": "image/png",
-					"sid": 353230339804977,
-					"icon-info": {
-						"purpose": "loading-logo"
-					}
-				},
-				{
-					"name": "icon-32.png",
-					"type": "image/png",
-					"sid": 844364226605725,
-					"icon-info": {
-						"purpose": "app-icon"
-					}
-				},
-				{
-					"name": "icon-64.png",
-					"type": "image/png",
-					"sid": 819454216375358,
+					"sid": 885892805424663,
 					"icon-info": {
 						"purpose": "app-icon"
 					}
@@ -192,7 +155,15 @@
 				{
 					"name": "icon-16.png",
 					"type": "image/png",
-					"sid": 199364779189090,
+					"sid": 989172497514948,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 274036251510488,
 					"icon-info": {
 						"purpose": "app-icon"
 					}
@@ -200,7 +171,31 @@
 				{
 					"name": "icon-128.png",
 					"type": "image/png",
-					"sid": 470216663403560,
+					"sid": 138079876930443,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 796947797272175,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 275094835776481,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 863856071559431,
 					"icon-info": {
 						"purpose": "app-icon"
 					}

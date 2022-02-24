@@ -1,0 +1,13 @@
+{
+	"name": "LifeBar",
+	"plugin-id": "TiledBg",
+	"sid": 139188437250529,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"StaminaBar",
+		"CounterBar",
+		"EmptyBar"
+	]
+}

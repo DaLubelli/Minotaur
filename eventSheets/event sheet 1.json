@@ -3,69 +3,1753 @@
 	"events": [
 		{
 			"eventType": "variable",
-			"name": "Screentime",
+			"name": "State",
+			"type": "string",
+			"initialValue": "Hostile",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 970194372475949
+		},
+		{
+			"eventType": "variable",
+			"name": "Counters",
 			"type": "number",
 			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
-			"sid": 533773740157242
+			"sid": 596468440828631
 		},
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Behaviours",
+			"title": "Main Character moveset",
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
 				{
-					"eventType": "block",
-					"conditions": [
+					"eventType": "group",
+					"disabled": false,
+					"title": "Idle, Turn & Walk",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
 						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 592161715452194,
-							"parameters": {
-								"interval-seconds": "1.0"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 774083650436860,
+									"parameters": {
+										"key": 39
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 899498617733965,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 269648101075177,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "simulate-control",
+									"objectClass": "Sprite",
+									"sid": 953532304145763,
+									"behaviorType": "Platform",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 225584512104426
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 284171115029344,
+									"parameters": {
+										"key": 37
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 543302629485341,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 282616752109684,
+									"parameters": {
+										"animation": "\"Turn\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 346661219359229,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 533598923019447
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 144876583318465,
+									"parameters": {
+										"key": 37
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 701744486847787
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 683829490350239,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "simulate-control",
+									"objectClass": "Sprite",
+									"sid": 803153189194966,
+									"behaviorType": "Platform",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 363700043738429
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 198155874282008,
+									"parameters": {
+										"key": 39
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 700319637098875
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 109154313145136,
+									"parameters": {
+										"animation": "\"Turn\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 806425278776926
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-stopped",
+									"objectClass": "Sprite",
+									"sid": 288330239137846,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 716414526567281,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 124380075959966
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 772284670305713,
+									"parameters": {
+										"animation": "\"Turn\""
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 616236812888857,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 307446656159898,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 261462895476386
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 980434275255799,
+									"parameters": {
+										"animation": "\"Turn\""
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 187290903761920
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 767392149110579,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 274586292049247
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 710392967546091,
+									"parameters": {
+										"animation": "\"Turn\""
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 347027713295388,
+									"isInverted": true
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 139832470426778,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 837116573119617,
+									"parameters": {
+										"state": "mirrored"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 575813459162125,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 875926948197671
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 779066377848930,
+									"parameters": {
+										"animation": "\"Turn\""
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 667165252200132
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 305227659664602,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 347355730285902,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 104059618294210,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 851057557580966
 						}
 					],
-					"actions": [
-						{
-							"id": "spawn-another-object",
-							"objectClass": "Sprite",
-							"sid": 915446668318337,
-							"parameters": {
-								"object": "TrackPoint",
-								"layer": "0",
-								"image-point": "0",
-								"create-hierarchy": false
-							}
-						}
-					],
-					"sid": 352256707564994
+					"sid": 723384853497631
 				},
 				{
-					"eventType": "block",
-					"conditions": [
+					"eventType": "group",
+					"disabled": false,
+					"title": "Attacks",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
 						{
-							"id": "on-created",
-							"objectClass": "TrackPoint",
-							"sid": 726690717583365
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 310540215199321,
+									"parameters": {
+										"key": 17
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 645665885626925,
+									"parameters": {
+										"animation": "\"Attack 1\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 101068435571311
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 793740617104738,
+									"parameters": {
+										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 397704462723979,
+									"behaviorType": "Platform",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 253536311889723,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 949181087486320
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 841623706349401,
+									"parameters": {
+										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 405576355054151,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 371959101428791,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 978462826184562
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 275113097195631,
+									"parameters": {
+										"key": 17
+									}
+								},
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 674262503978833,
+									"parameters": {
+										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Sprite",
+									"sid": 160772789891447,
+									"parameters": {
+										"comparison": 5,
+										"number": "5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 957051136903301,
+									"parameters": {
+										"animation": "\"Attack 2\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 159814867149782
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 699085204751567,
+									"parameters": {
+										"animation": "\"Attack 2\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 176078894573650,
+									"behaviorType": "Platform",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 514402155985157,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 848412996479164
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 842967509198648,
+									"parameters": {
+										"animation": "\"Attack 2\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 738815753800587,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 593711903877815,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 364385469756176
 						}
 					],
-					"actions": [
+					"sid": 520577904874440
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Parry",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 935559282664636,
-							"parameters": {
-								"variable": "Screentime",
-								"value": "0"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Boss",
+									"sid": 997767992283458,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 530840421434601,
+									"parameters": {
+										"comparison": 5,
+										"number": "6"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 703227788415302,
+									"parameters": {
+										"comparison": 3,
+										"number": "11"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 277278762827811
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 457316642585259,
+									"parameters": {
+										"animation": "\"Parry\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 987241724413394,
+									"parameters": {
+										"state": "mirrored"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Boss",
+									"sid": 461993788752738,
+									"parameters": {
+										"x": "Sprite.X-100",
+										"y": "Boss.Y"
+									}
+								}
+							],
+							"sid": 195101391231296
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Boss",
+									"sid": 651559896157467,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 226304401096101,
+									"parameters": {
+										"comparison": 5,
+										"number": "6"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 832417949348164,
+									"parameters": {
+										"comparison": 3,
+										"number": "11"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 794494872275790,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 515979362719005,
+									"parameters": {
+										"animation": "\"Parry\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 998460562086377,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Boss",
+									"sid": 633244520791292,
+									"parameters": {
+										"x": "Sprite.X+100",
+										"y": "Boss.Y"
+									}
+								}
+							],
+							"sid": 470530202574650
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Boss",
+									"sid": 165300799946424,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 339332065956824,
+									"parameters": {
+										"comparison": 5,
+										"number": "13"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 466694605141019,
+									"parameters": {
+										"comparison": 3,
+										"number": "16"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 551137175615436
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 631777688108451,
+									"parameters": {
+										"animation": "\"Parry 2\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 410688963633536,
+									"parameters": {
+										"state": "mirrored"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Boss",
+									"sid": 196036763044317,
+									"parameters": {
+										"x": "Sprite.X-100",
+										"y": "Boss.Y"
+									}
+								}
+							],
+							"sid": 858694785060954
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Boss",
+									"sid": 498550802685757,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 266565382115110,
+									"parameters": {
+										"comparison": 5,
+										"number": "13"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 339485277962724,
+									"parameters": {
+										"comparison": 3,
+										"number": "16"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 530940304453043,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 997606808064337,
+									"parameters": {
+										"animation": "\"Parry 2\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 179288947679385,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Boss",
+									"sid": 405471024910275,
+									"parameters": {
+										"x": "Sprite.X+100",
+										"y": "Boss.Y"
+									}
+								}
+							],
+							"sid": 547788250770590
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Boss",
+									"sid": 661845736787243,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 418050029629235,
+									"parameters": {
+										"comparison": 5,
+										"number": "20"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 959145984805021,
+									"parameters": {
+										"comparison": 3,
+										"number": "23"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 869310374519468
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 719258595193089,
+									"parameters": {
+										"animation": "\"Parry 3\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 751653205456089,
+									"parameters": {
+										"state": "mirrored"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Boss",
+									"sid": 863437906368345,
+									"parameters": {
+										"x": "Sprite.X-100",
+										"y": "Boss.Y"
+									}
+								}
+							],
+							"sid": 473033102317164
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Boss",
+									"sid": 309674357680412,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 353379782695749,
+									"parameters": {
+										"comparison": 5,
+										"number": "20"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 182768633906709,
+									"parameters": {
+										"comparison": 3,
+										"number": "23"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 197370696774462,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 759599119418798,
+									"parameters": {
+										"animation": "\"Parry 3\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Sprite",
+									"sid": 605315184983796,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Boss",
+									"sid": 102320046236500,
+									"parameters": {
+										"x": "Sprite.X+100",
+										"y": "Boss.Y"
+									}
+								}
+							],
+							"sid": 933388559231318
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 415748669230461,
+									"parameters": {
+										"animation": "\"Parry\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Sprite",
+									"sid": 243169290611027,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								}
+							],
+							"sid": 409069850736365
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 651451675570581
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Sprite",
+									"sid": 720932195245560,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "disabled"
+									}
+								}
+							],
+							"sid": 821438968637090
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 418545296531640,
+									"parameters": {
+										"animation": "\"Parry 2\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Sprite",
+									"sid": 236447042314839,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								}
+							],
+							"sid": 579096797322293
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 222853219883162
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Sprite",
+									"sid": 597877792003015,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "disabled"
+									}
+								}
+							],
+							"sid": 836646173714826
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 628140728046184,
+									"parameters": {
+										"animation": "\"Parry 3\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Sprite",
+									"sid": 129097626171160,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								}
+							],
+							"sid": 295348986357668
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 200287870742903
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Sprite",
+									"sid": 105181590873777,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "disabled"
+									}
+								}
+							],
+							"sid": 764243866188890
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 542909584925663,
+									"parameters": {
+										"animation": "\"Parry\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 895860908261613,
+									"behaviorType": "Platform",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 990451878838966,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 880278955790917
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 485140588135995,
+									"parameters": {
+										"animation": "\"Parry 2\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 313487786937323,
+									"behaviorType": "Platform",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 130151921286428,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 695985465930733
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 888367562562612,
+									"parameters": {
+										"animation": "\"Parry 3\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 606702376140717,
+									"behaviorType": "Platform",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 369636237813230,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 748224972400903
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 739023453497323,
+									"parameters": {
+										"animation": "\"Parry\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 856169756760320,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 997149457263174,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 906711981796453
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 737397940548859,
+									"parameters": {
+										"animation": "\"Parry 2\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 409029708821196,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 233140137979277,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 529256135952276
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Sprite",
+									"sid": 392714790961790,
+									"parameters": {
+										"animation": "\"Parry 3\""
+									}
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "Sprite",
+									"sid": 543360821279249,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Sprite",
+									"sid": 884551451195554,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 430432502317183
 						}
 					],
-					"sid": 367721049400038
+					"sid": 492162248171630
+				}
+			],
+			"sid": 506309324351449
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Boss Moveset",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Parries",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 287814428991174,
+									"parameters": {
+										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 763142316154226,
+									"parameters": {
+										"comparison": 5,
+										"number": "2"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 865927785751529,
+									"parameters": {
+										"comparison": 5,
+										"x-co-ordinate": "Boss.X -200"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 583380840505633,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Boss.X"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 518057536455102,
+									"isInverted": true
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 331860752069059,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 389631910088414,
+									"parameters": {
+										"animation": "\"Parry\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Boss",
+									"sid": 590381870828935,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 135903202109236,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Defensive\""
+									}
+								},
+								{
+									"id": "stop",
+									"objectClass": "Boss",
+									"sid": 952885818091752,
+									"behaviorType": "MoveTo"
+								}
+							],
+							"sid": 153527830515962
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 907734690935543,
+									"parameters": {
+										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 387210385645334,
+									"parameters": {
+										"comparison": 5,
+										"number": "2"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 629529200933835,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Boss.X +200"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 989521145622755,
+									"parameters": {
+										"comparison": 5,
+										"x-co-ordinate": "Boss.X"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 943372675114801
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 465731034440116
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 139435163787615,
+									"parameters": {
+										"animation": "\"Parry\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Boss",
+									"sid": 240969193963899,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 200403405872448,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Defensive\""
+									}
+								},
+								{
+									"id": "stop",
+									"objectClass": "Boss",
+									"sid": 614599653631544,
+									"behaviorType": "MoveTo"
+								}
+							],
+							"sid": 641257455125037
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Boss",
+									"sid": 553190146697980,
+									"parameters": {
+										"animation": "\"Parry\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 310522876208302,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Boss",
+									"sid": 152828946374184,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "disabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 416393668326330,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Aggressive\""
+									}
+								},
+								{
+									"id": "move-to-position",
+									"objectClass": "Boss",
+									"sid": 785558823470064,
+									"behaviorType": "MoveTo",
+									"parameters": {
+										"x": "Sprite.X",
+										"y": "Sprite.Y",
+										"mode": "direct"
+									}
+								}
+							],
+							"sid": 994512663910184
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 838942480354136,
+									"parameters": {
+										"animation": "\"Attack 2\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 906702205504040,
+									"parameters": {
+										"comparison": 5,
+										"number": "2"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 903450190086771,
+									"parameters": {
+										"comparison": 5,
+										"x-co-ordinate": "Boss.X -200"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 958549766304238,
+									"isInverted": true
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 249872230107187,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 677188413434969,
+									"parameters": {
+										"animation": "\"Parry 2\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Boss",
+									"sid": 709228776561595,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 727717235700159,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Defensive\""
+									}
+								},
+								{
+									"id": "stop",
+									"objectClass": "Boss",
+									"sid": 631683463526373,
+									"behaviorType": "MoveTo"
+								}
+							],
+							"sid": 410269277737217
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Sprite",
+									"sid": 915090512598528,
+									"parameters": {
+										"animation": "\"Attack 2\""
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "Boss",
+									"sid": 983809663232690,
+									"parameters": {
+										"comparison": 5,
+										"number": "2"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 559458704533451,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Boss.X +200"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Sprite",
+									"sid": 742298877369933
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 964018312148194
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 458791367842579,
+									"parameters": {
+										"animation": "\"Parry 2\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Boss",
+									"sid": 376669602140247,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 924763976565724,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Defensive\""
+									}
+								},
+								{
+									"id": "stop",
+									"objectClass": "Boss",
+									"sid": 308969586344223,
+									"behaviorType": "MoveTo"
+								}
+							],
+							"sid": 234287609898044
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Boss",
+									"sid": 629972241596191,
+									"parameters": {
+										"animation": "\"Parry 2\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 826610438147500,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Boss",
+									"sid": 831100803479592,
+									"behaviorType": "Solid",
+									"parameters": {
+										"state": "disabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 796801034051521,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Aggressive\""
+									}
+								},
+								{
+									"id": "move-to-position",
+									"objectClass": "Boss",
+									"sid": 419076151329357,
+									"behaviorType": "MoveTo",
+									"parameters": {
+										"x": "Sprite.X",
+										"y": "Sprite.Y",
+										"mode": "direct"
+									}
+								}
+							],
+							"sid": 929188598122126
+						}
+					],
+					"sid": 783972200340008
 				},
 				{
 					"eventType": "block",
@@ -73,227 +1757,2718 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 310940358172218,
+							"sid": 658809149807546,
 							"parameters": {
-								"variable": "Screentime",
+								"variable": "State",
 								"comparison": 0,
-								"value": "2"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "TrackPoint",
-							"sid": 514582426474224
-						}
-					],
-					"sid": 906720258394109
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 815049662592570,
-							"parameters": {
-								"interval-seconds": "0.5"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "add-to-eventvar",
-							"objectClass": "System",
-							"sid": 836162136203093,
-							"parameters": {
-								"variable": "Screentime",
-								"value": "1"
-							}
-						}
-					],
-					"sid": 132885171279524
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-start-of-layout",
-							"objectClass": "System",
-							"sid": 719333531791860
-						}
-					],
-					"actions": [
-						{
-							"id": "move-to-position",
-							"objectClass": "Minotaur",
-							"sid": 477643678405341,
-							"behaviorType": "MoveTo",
-							"parameters": {
-								"x": "TrackPoint.X",
-								"y": "TrackPoint.Y",
-								"mode": "direct"
-							}
-						}
-					],
-					"sid": 129849431540431
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-path-found",
-							"objectClass": "Minotaur",
-							"sid": 302860431521254,
-							"behaviorType": "Pathfinding"
-						}
-					],
-					"actions": [
-						{
-							"id": "move-along-path",
-							"objectClass": "Minotaur",
-							"sid": 784104891505395,
-							"behaviorType": "Pathfinding"
-						}
-					],
-					"sid": 380853945829188
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-moving-along-path",
-							"objectClass": "Minotaur",
-							"sid": 425909356750264,
-							"behaviorType": "Pathfinding"
-						}
-					],
-					"actions": [
-						{
-							"id": "set-position",
-							"objectClass": "Particles",
-							"sid": 598241386251492,
-							"parameters": {
-								"x": "Minotaur.X",
-								"y": "Minotaur.Y"
+								"value": "\"Hostile\""
 							}
 						},
 						{
-							"id": "set-spraying",
-							"objectClass": "Particles",
-							"sid": 634975063181533,
+							"id": "has-los-to-position",
+							"objectClass": "Boss",
+							"sid": 355371581208650,
+							"behaviorType": "LineOfSight",
 							"parameters": {
-								"state": "spraying"
+								"x": "Sprite.X",
+								"y": "Sprite.Y"
 							}
-						}
-					],
-					"sid": 594298611453519
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+						},
 						{
-							"id": "on-arrived",
-							"objectClass": "Minotaur",
-							"sid": 626968139590894,
-							"behaviorType": "Pathfinding"
-						}
-					],
-					"actions": [
-						{
-							"id": "set-spraying",
-							"objectClass": "Particles",
-							"sid": 657938473037051,
+							"id": "compare-x",
+							"objectClass": "Sprite",
+							"sid": 893360687895991,
 							"parameters": {
-								"state": "not-spraying"
+								"comparison": 2,
+								"x-co-ordinate": "Boss.X"
 							}
-						}
-					],
-					"sid": 365542873536988
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-created",
-							"objectClass": "TrackPoint",
-							"sid": 500712439515046
-						}
-					],
-					"actions": [
-						{
-							"id": "find-path",
-							"objectClass": "Minotaur",
-							"sid": 513056064972782,
-							"behaviorType": "Pathfinding",
-							"parameters": {
-								"x": "TrackPoint.X",
-								"y": "TrackPoint.Y"
-							}
-						}
-					],
-					"sid": 377815844063299
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-failed-to-find-path",
-							"objectClass": "Minotaur",
-							"sid": 174859443335854,
-							"behaviorType": "Pathfinding"
 						}
 					],
 					"actions": [
 						{
 							"id": "move-to-position",
-							"objectClass": "Minotaur",
-							"sid": 907672340475742,
+							"objectClass": "Boss",
+							"sid": 402091317548531,
 							"behaviorType": "MoveTo",
 							"parameters": {
-								"x": "Sprite.X",
+								"x": "Sprite.X+100",
 								"y": "Sprite.Y",
 								"mode": "direct"
 							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Boss",
+							"sid": 252828663731812,
+							"parameters": {
+								"animation": "\"Walk\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Boss",
+							"sid": 196983328250525,
+							"parameters": {
+								"state": "not-mirrored"
+							}
 						}
 					],
-					"sid": 184978971738261
+					"sid": 750965521589774
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "every-x-seconds",
+							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 442140928182708,
+							"sid": 897211196768073,
 							"parameters": {
-								"interval-seconds": "random(5)"
+								"variable": "State",
+								"comparison": 0,
+								"value": "\"Hostile\""
+							}
+						},
+						{
+							"id": "has-los-to-position",
+							"objectClass": "Boss",
+							"sid": 928349759768061,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"x": "Sprite.X",
+								"y": "Sprite.Y"
+							}
+						},
+						{
+							"id": "compare-x",
+							"objectClass": "Sprite",
+							"sid": 597317887867821,
+							"parameters": {
+								"comparison": 4,
+								"x-co-ordinate": "Boss.X"
 							}
 						}
 					],
 					"actions": [
 						{
 							"id": "move-to-position",
-							"objectClass": "Minotaur",
-							"sid": 550761594457155,
+							"objectClass": "Boss",
+							"sid": 810997155165149,
 							"behaviorType": "MoveTo",
 							"parameters": {
-								"x": "Sprite.X",
+								"x": "Sprite.X-100",
 								"y": "Sprite.Y",
 								"mode": "direct"
 							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Boss",
+							"sid": 373873580924571,
+							"parameters": {
+								"animation": "\"Walk\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Boss",
+							"sid": 533963199651203,
+							"parameters": {
+								"state": "mirrored"
+							}
 						}
 					],
-					"sid": 950646511585995
+					"sid": 209234270390368
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "Boss",
+							"sid": 670560391040699,
+							"behaviorType": "MoveTo",
+							"isInverted": true
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 528048196354682,
+							"parameters": {
+								"variable": "State",
+								"comparison": 0,
+								"value": "\"Hostile\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Boss",
+							"sid": 378439647208427,
+							"parameters": {
+								"animation": "\"Idle\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 339663315317646
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Dodge",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 501868752133873,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Sprite.X+100"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 143731375933491,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "500"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 195751221373545,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "Boss.X"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 453392229223219,
+									"parameters": {
+										"variable": "State",
+										"comparison": 0,
+										"value": "\"Hostile\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 420351858249360,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Retiring\""
+									}
+								}
+							],
+							"sid": 125488940631061
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 788498422030933,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Sprite.X+100"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 262484315664635,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "500"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 766401999279240,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "Boss.X"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 678239945638220,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Sprite.X +300"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 719649456557785,
+									"parameters": {
+										"variable": "State",
+										"comparison": 0,
+										"value": "\"Hostile\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 867511276028424,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Aggressive\""
+									}
+								}
+							],
+							"sid": 848583899412719
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 512803923338838,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Sprite.X-100"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 291707325939833,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "500"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 228114041660135,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "Boss.X"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 184605633440302,
+									"parameters": {
+										"variable": "State",
+										"comparison": 0,
+										"value": "\"Hostile\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 841424991294784,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Retiring\""
+									}
+								}
+							],
+							"sid": 808019820045923
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 390560713674477,
+									"parameters": {
+										"comparison": 3,
+										"x-co-ordinate": "Sprite.X-100"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 681003484101111,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "500"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 390258525130769,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "Boss.X"
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 667307759185117,
+									"parameters": {
+										"comparison": 5,
+										"x-co-ordinate": "Sprite.X -300"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 418642657922717,
+									"parameters": {
+										"variable": "State",
+										"comparison": 0,
+										"value": "\"Hostile\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 489181341747490,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Aggressive\""
+									}
+								}
+							],
+							"sid": 128545856550141
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 112157672671705,
+									"parameters": {
+										"variable": "State",
+										"comparison": 0,
+										"value": "\"Retiring\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Boss",
+									"sid": 902012954625188,
+									"parameters": {
+										"animation": "\"Dodge\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "stop",
+									"objectClass": "Boss",
+									"sid": 946476586002788,
+									"behaviorType": "MoveTo"
+								}
+							],
+							"sid": 849628295602149
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Dodge Sprites",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 695646056792478,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 689923651361413,
+											"parameters": {
+												"comparison": 0,
+												"number": "3"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 355070281853576,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 284958105635672,
+											"parameters": {
+												"x": "Boss.X+30",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 145959385460378
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 951654894233090,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 225702042706981,
+											"parameters": {
+												"comparison": 0,
+												"number": "4"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 344551956124251,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 186654270890702,
+											"parameters": {
+												"x": "Boss.X+10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 957534885220409
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 565028633140382,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 675704731099595,
+											"parameters": {
+												"comparison": 0,
+												"number": "5"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 662562291895735,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 399387732641009,
+											"parameters": {
+												"x": "Boss.X+10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 144389962196480
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 400333139255119,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 899198169371198,
+											"parameters": {
+												"comparison": 0,
+												"number": "6"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 914651204319104,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 954426597798848,
+											"parameters": {
+												"x": "Boss.X+10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 792418208402471
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 642677749393724,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 217939404020400,
+											"parameters": {
+												"comparison": 0,
+												"number": "7"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 990213056103927,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 700485571221347,
+											"parameters": {
+												"x": "Boss.X+10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 118360689168123
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 994648492107407,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 368711728339453,
+											"parameters": {
+												"comparison": 0,
+												"number": "8"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 619705056620900,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 383721218809401,
+											"parameters": {
+												"x": "Boss.X+5",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 801021127710673
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 664153747005004,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 475980321413945,
+											"parameters": {
+												"comparison": 0,
+												"number": "9"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 445290798186260,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 828223586454612,
+											"parameters": {
+												"x": "Boss.X+3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 832137049564155
+								}
+							],
+							"sid": 320330294508580
+						},
+						{
+							"eventType": "group",
+							"disabled": true,
+							"title": "Dodge Sprites (short)",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 359733598848788,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 686093886045248,
+											"parameters": {
+												"comparison": 0,
+												"number": "3"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 276234088058493,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 210689786745014,
+											"parameters": {
+												"x": "Boss.X+5",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 225332632306757,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 448738205074639,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 670806467837255,
+											"parameters": {
+												"comparison": 0,
+												"number": "4"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 370875397812199,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 241657081814479,
+											"parameters": {
+												"x": "Boss.X+3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 247592899980218,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 938593950370668,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 593798752100428,
+											"parameters": {
+												"comparison": 0,
+												"number": "5"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 210132496735626,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 778002523725249,
+											"parameters": {
+												"x": "Boss.X+3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 268125767173202,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 467946711429677,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 699522429185944,
+											"parameters": {
+												"comparison": 0,
+												"number": "6"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 853818397472865,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 345832529009783,
+											"parameters": {
+												"x": "Boss.X+2",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 458645176504576,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 445983744693196,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 981749671881918,
+											"parameters": {
+												"comparison": 0,
+												"number": "7"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 493823186425173,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 106290496533228,
+											"parameters": {
+												"x": "Boss.X+1",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 357528023054742,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 784798394688019,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 784922253271671,
+											"parameters": {
+												"comparison": 0,
+												"number": "8"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 597259482141776,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 808203212989476,
+											"parameters": {
+												"x": "Boss.X+0.5",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 333690325746138,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 511038918553816,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 170567597078059,
+											"parameters": {
+												"comparison": 0,
+												"number": "9"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 752479800522844,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 633191805056217,
+											"parameters": {
+												"x": "Boss.X+0.3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 523272063858468,
+									"disabled": true
+								}
+							],
+							"sid": 146778339715099
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Dodge Sprites2",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 337628084616156,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 616734294110798,
+											"parameters": {
+												"comparison": 0,
+												"number": "3"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 435653532355824
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 349043007769829,
+											"parameters": {
+												"x": "Boss.X-30",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 935006086289180
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 637415165565787,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 996251761761163,
+											"parameters": {
+												"comparison": 0,
+												"number": "4"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 903092704437072
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 546943415886294,
+											"parameters": {
+												"x": "Boss.X-10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 878203913912857
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 105901305815684,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 428898068581891,
+											"parameters": {
+												"comparison": 0,
+												"number": "5"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 627624900107220
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 638894312953069,
+											"parameters": {
+												"x": "Boss.X-10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 690054753590734
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 284934914606477,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 492165341369754,
+											"parameters": {
+												"comparison": 0,
+												"number": "6"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 545911491145486
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 818384384756311,
+											"parameters": {
+												"x": "Boss.X-10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 176754716755140
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 535018682658198,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 827009905841792,
+											"parameters": {
+												"comparison": 0,
+												"number": "7"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 656601379376737
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 523152801941155,
+											"parameters": {
+												"x": "Boss.X-10",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 628270855318382
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 212898384868253,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 278531172366714,
+											"parameters": {
+												"comparison": 0,
+												"number": "8"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 165135112241261
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 780890434755850,
+											"parameters": {
+												"x": "Boss.X-5",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 101735166830655
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 174079757899415,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 598428007968699,
+											"parameters": {
+												"comparison": 0,
+												"number": "9"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 850702165374102
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 564641057583143,
+											"parameters": {
+												"x": "Boss.X-3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 929369648873849
+								}
+							],
+							"sid": 650233586266096
+						},
+						{
+							"eventType": "group",
+							"disabled": true,
+							"title": "Dodge Sprites2 (short)",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 496926691087683,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 387827925606544,
+											"parameters": {
+												"comparison": 0,
+												"number": "3"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 887934817867584
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 679273931191494,
+											"parameters": {
+												"x": "Boss.X-5",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 790646492727876,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 379069585047610,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 586324804939906,
+											"parameters": {
+												"comparison": 0,
+												"number": "4"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 666829244987007
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 699716745316419,
+											"parameters": {
+												"x": "Boss.X-3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 583589363042351,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 398915625300999,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 207715311788783,
+											"parameters": {
+												"comparison": 0,
+												"number": "5"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 808477209716567
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 832179432504945,
+											"parameters": {
+												"x": "Boss.X-3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 179000211518167,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 274418057945740,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 221817947252657,
+											"parameters": {
+												"comparison": 0,
+												"number": "6"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 701240141638806
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 689375410160629,
+											"parameters": {
+												"x": "Boss.X-2",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 842731496432629,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 165477082696750,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 207256960605002,
+											"parameters": {
+												"comparison": 0,
+												"number": "7"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 451711419995438
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 957644047862992,
+											"parameters": {
+												"x": "Boss.X-1",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 432590712151099,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 311805669091702,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 729855973705325,
+											"parameters": {
+												"comparison": 0,
+												"number": "8"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 718139792432792
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 927936499845710,
+											"parameters": {
+												"x": "Boss.X-0.5",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 416793369513319,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 534025369408598,
+											"parameters": {
+												"animation": "\"Dodge\""
+											}
+										},
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 315973317661363,
+											"parameters": {
+												"comparison": 0,
+												"number": "9"
+											}
+										},
+										{
+											"id": "is-mirrored",
+											"objectClass": "Boss",
+											"sid": 493487834983984
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 782495093988326,
+											"parameters": {
+												"x": "Boss.X-0.3",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 169451337269490,
+									"disabled": true
+								}
+							],
+							"sid": 702915306435958
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Boss",
+									"sid": 877264932282537,
+									"parameters": {
+										"animation": "\"Dodge\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 420241948519410,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Hostile\""
+									}
+								}
+							],
+							"sid": 632464117746395
+						}
+					],
+					"sid": 498511981914086
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-x",
+							"objectClass": "Boss",
+							"sid": 616277364861212,
+							"parameters": {
+								"comparison": 3,
+								"x-co-ordinate": "Sprite.X +300"
+							}
+						},
+						{
+							"id": "compare-x",
+							"objectClass": "Sprite",
+							"sid": 366010730938640,
+							"parameters": {
+								"comparison": 2,
+								"x-co-ordinate": "Boss.X"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 507619927912218,
+							"parameters": {
+								"variable": "State",
+								"comparison": 0,
+								"value": "\"Hostile\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 825151480574212,
+							"parameters": {
+								"variable": "State",
+								"value": "\"Aggressive\""
+							}
+						}
+					],
+					"sid": 759095499351271
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-x",
+							"objectClass": "Boss",
+							"sid": 165816891904275,
+							"parameters": {
+								"comparison": 5,
+								"x-co-ordinate": "Sprite.X -300"
+							}
+						},
+						{
+							"id": "compare-x",
+							"objectClass": "Sprite",
+							"sid": 393358474618140,
+							"parameters": {
+								"comparison": 4,
+								"x-co-ordinate": "Boss.X"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 199657160362260,
+							"parameters": {
+								"variable": "State",
+								"comparison": 0,
+								"value": "\"Hostile\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 545863504997173,
+							"parameters": {
+								"variable": "State",
+								"value": "\"Aggressive\""
+							}
+						}
+					],
+					"sid": 910968076510634
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 766428591219646,
+							"parameters": {
+								"variable": "State",
+								"comparison": 0,
+								"value": "\"Aggressive\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Boss",
+							"sid": 921429092075615,
+							"parameters": {
+								"animation": "\"Slashes\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "stop",
+							"objectClass": "Boss",
+							"sid": 360927949717763,
+							"behaviorType": "MoveTo"
+						}
+					],
+					"sid": 544331021702297
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Slashes",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Attack 1",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 102095601930533,
+											"parameters": {
+												"comparison": 0,
+												"number": "8"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 353674415721612,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 702399830919847,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 680074741089376,
+											"parameters": {
+												"x": "Sprite.X - 50",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 512813004710946
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 873032575577009,
+											"parameters": {
+												"comparison": 0,
+												"number": "8"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 557079883291170,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 575147950440608,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 512527054374893,
+											"parameters": {
+												"x": "Sprite.X + 50",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 271854106500878
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 884298711398387,
+											"parameters": {
+												"comparison": 0,
+												"number": "7"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 955631170432739,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 862464596911179,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 351903263126379,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2) ",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 730158186099813
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 465967412124423,
+											"parameters": {
+												"comparison": 0,
+												"number": "7"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 928898275080670,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 546834521946874,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 252940878350100,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2)",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 746469511053550
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 597535732969561,
+											"parameters": {
+												"comparison": 0,
+												"number": "6"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 676280043550005,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 100013227378755,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 459853399320114,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2) +30",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 890201141816241
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 792539029585162,
+											"parameters": {
+												"comparison": 0,
+												"number": "6"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 463720585212704,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 806648051662927,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 806012146962445,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2) -30",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 262264298715793
+								}
+							],
+							"sid": 295243492993340
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Attack 2",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 751860659162464,
+											"parameters": {
+												"comparison": 0,
+												"number": "14"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 602731253916865,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 451661652939553,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 374339359075663,
+											"parameters": {
+												"x": "Sprite.X - 50",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 824027853615022
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 245743520057832,
+											"parameters": {
+												"comparison": 0,
+												"number": "14"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 830769196935281,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 900871431942124,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 357905460499638,
+											"parameters": {
+												"x": "Sprite.X + 50",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 970933088506790
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 384480640028943,
+											"parameters": {
+												"comparison": 0,
+												"number": "13"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 969345397155408,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 343525645034348,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 621169954418380,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2) ",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 453528943645328
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 122308377934130,
+											"parameters": {
+												"comparison": 0,
+												"number": "13"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 740103101814692,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 334039874019380,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 425094141678403,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2)",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 689303922500163
+								}
+							],
+							"sid": 543186563335407
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Attack 3",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 701053242819244,
+											"parameters": {
+												"comparison": 0,
+												"number": "20"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 235063097706861,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 101315771028943,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 683430612131855,
+											"parameters": {
+												"x": "Sprite.X - 50",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 253377410839910
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 865441542852647,
+											"parameters": {
+												"comparison": 0,
+												"number": "20"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 790393670243984,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 227093408548410,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 278741989258900,
+											"parameters": {
+												"x": "Sprite.X + 50",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 570259024750802
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 897233499895394,
+											"parameters": {
+												"comparison": 0,
+												"number": "19"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 353085107178264,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 252200605966820,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 403244428583523,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2) ",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 563877899551957
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "Boss",
+											"sid": 287192100511838,
+											"parameters": {
+												"comparison": 0,
+												"number": "19"
+											}
+										},
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Boss",
+											"sid": 195728107674206,
+											"parameters": {
+												"animation": "\"Slashes\""
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "Sprite",
+											"sid": 202672558830571,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "Boss.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "Boss",
+											"sid": 262412850192118,
+											"parameters": {
+												"x": "((Sprite.X + Boss.X)/2)",
+												"y": "Boss.Y"
+											}
+										}
+									],
+									"sid": 481176195084220
+								}
+							],
+							"sid": 588187340014312
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Boss",
+									"sid": 367020770723640,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 446709101708332,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "500"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 226872892247010,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 217337153766650,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Retiring\""
+									}
+								}
+							],
+							"sid": 102825788585649
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "Boss",
+									"sid": 404842363398256,
+									"parameters": {
+										"animation": "\"Slashes\""
+									}
+								},
+								{
+									"id": "compare-x",
+									"objectClass": "Boss",
+									"sid": 881352213020006,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "500"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "Boss",
+									"sid": 560648658348631
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 201033201541828,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Retiring\""
+									}
+								}
+							],
+							"sid": 857687393125197
+						}
+					],
+					"sid": 772025336445015
 				}
 			],
-			"sid": 850270345202845
+			"sid": 814468958860241
 		},
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Game design",
+			"title": "Healthbar",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 988300344019858,
+							"parameters": {
+								"animation": "\"Parry\""
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 278234986686052,
+							"parameters": {
+								"comparison": 2,
+								"width": "327"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 204745088341407,
+							"parameters": {
+								"width": "MainCharacterBar.Width+0.5"
+							}
+						}
+					],
+					"sid": 929013009015324
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 280733550186795,
+							"parameters": {
+								"animation": "\"Parry 2\""
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 205654265217610,
+							"parameters": {
+								"comparison": 2,
+								"width": "327"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 220393241292208,
+							"parameters": {
+								"width": "MainCharacterBar.Width+0.5"
+							}
+						}
+					],
+					"sid": 191537666636496
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Sprite",
+							"sid": 398765280810890,
+							"parameters": {
+								"animation": "\"Parry\""
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 193515322494425,
+							"parameters": {
+								"comparison": 4,
+								"width": "0.5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 580824342326226,
+							"parameters": {
+								"width": "MainCharacterBar.Width-0.7"
+							}
+						}
+					],
+					"sid": 425415746465225
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Sprite",
+							"sid": 442872076142974,
+							"parameters": {
+								"animation": "\"Parry 2\""
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 647981008915131,
+							"parameters": {
+								"comparison": 4,
+								"width": "0.5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 122358519763645,
+							"parameters": {
+								"width": "MainCharacterBar.Width-0.7"
+							}
+						}
+					],
+					"sid": 575687321866226
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Sprite",
+							"sid": 336007338613497,
+							"parameters": {
+								"animation": "\"Parry 3\""
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 369484867250019,
+							"parameters": {
+								"comparison": 4,
+								"width": "0.5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 802223240235875,
+							"parameters": {
+								"width": "MainCharacterBar.Width-0.7"
+							}
+						}
+					],
+					"sid": 251012320991341
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 340392145308647,
+							"parameters": {
+								"interval-seconds": "0.3"
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 215738040953405,
+							"parameters": {
+								"comparison": 4,
+								"width": "167"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 604208174835090,
+							"parameters": {
+								"width": "MainCharacterBar.Width-0.5"
+							}
+						}
+					],
+					"sid": 105912371143698
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 938903646861808,
+							"parameters": {
+								"interval-seconds": "0.3"
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 223777350095054,
+							"parameters": {
+								"comparison": 2,
+								"width": "167"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 805085309853906,
+							"parameters": {
+								"width": "MainCharacterBar.Width+0.5"
+							}
+						}
+					],
+					"sid": 987984792224305
+				}
+			],
+			"sid": 957350280876822
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Stamina",
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
@@ -303,185 +4478,1425 @@
 						{
 							"id": "on-start-of-layout",
 							"objectClass": "System",
-							"sid": 870345491891984
+							"sid": 386243649983987
 						}
 					],
 					"actions": [
 						{
-							"id": "set-collisions-enabled",
-							"objectClass": "Minotaur",
-							"sid": 578885401129544,
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 335572804201564,
 							"parameters": {
-								"collisions": "disabled"
+								"width": "0.1"
 							}
 						}
 					],
-					"sid": 708418352464562,
+					"sid": 464629772611311
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 503098260019702,
+							"parameters": {
+								"animation": "\"Parry\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 770568236279524,
+							"parameters": {
+								"width": "StaminaBar.Width+1"
+							}
+						}
+					],
+					"sid": 386592454117445
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 113095699896250,
+							"parameters": {
+								"animation": "\"Parry 2\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 838365975441915,
+							"parameters": {
+								"width": "StaminaBar.Width+1"
+							}
+						}
+					],
+					"sid": 926866388848034
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-width",
+							"objectClass": "StaminaBar",
+							"sid": 923208833981168,
+							"parameters": {
+								"comparison": 5,
+								"width": "100"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 531814244223065,
+							"parameters": {
+								"width": "0"
+							}
+						}
+					],
+					"sid": 588391035664312
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 309262740201405,
+							"parameters": {
+								"interval-seconds": "0.2"
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "StaminaBar",
+							"sid": 909209407736522,
+							"parameters": {
+								"comparison": 4,
+								"width": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 140675761363228,
+							"parameters": {
+								"width": "StaminaBar.Width-1"
+							}
+						}
+					],
+					"sid": 458999213943643
+				}
+			],
+			"sid": 105044446497991
+		},
+		{
+			"eventType": "group",
+			"disabled": true,
+			"title": "Stamina2",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 643891486096690,
+							"parameters": {
+								"animation": "\"Parry\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 171175059191879,
+							"parameters": {
+								"width": "StaminaBar.Width+0.3"
+							}
+						}
+					],
+					"sid": 606884769209531,
 					"disabled": true
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Sprite",
-							"sid": 151885796424053,
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 334425685750155,
 							"parameters": {
-								"object": "Yellow"
+								"animation": "\"Parry 2\""
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "destroy",
-							"objectClass": "Yellow",
-							"sid": 923676122891731
-						},
-						{
-							"id": "destroy",
-							"objectClass": "DestructibleLavaYellow",
-							"sid": 208544558048287
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 398069245471543,
+							"parameters": {
+								"width": "StaminaBar.Width+0.3"
+							}
 						}
 					],
-					"sid": 210003825267473
+					"sid": 668384016957970,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Sprite",
-							"sid": 634348801345725,
+							"id": "compare-width",
+							"objectClass": "StaminaBar",
+							"sid": 862084825764052,
 							"parameters": {
-								"object": "Green"
+								"comparison": 5,
+								"width": "100"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "destroy",
-							"objectClass": "Green",
-							"sid": 394127090207414
-						},
-						{
-							"id": "destroy",
-							"objectClass": "DestructibleLavaGreen",
-							"sid": 193707488637512
-						}
-					],
-					"sid": 971359199998301
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Sprite",
-							"sid": 706908594375240,
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 731850057586687,
 							"parameters": {
-								"object": "Blue"
+								"width": "0"
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "Blue",
-							"sid": 321927436670618
-						},
-						{
-							"id": "destroy",
-							"objectClass": "DestructibleLavaBlue",
-							"sid": 179029614144631
-						}
-					],
-					"sid": 913525660497539
+					"sid": 751798805167995,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Minotaur",
-							"sid": 549814076496603,
-							"parameters": {
-								"object": "Sprite"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "flash",
-							"objectClass": "Sprite",
-							"sid": 191052060375011,
-							"behaviorType": "Flash",
-							"parameters": {
-								"on-time": "0.1",
-								"off-time": "0.1",
-								"duration": "1.0"
-							}
-						}
-					],
-					"sid": 747722470257111
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-flash-ended",
-							"objectClass": "Sprite",
-							"sid": 625717886331118,
-							"behaviorType": "Flash"
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "Sprite",
-							"sid": 123334181431321
-						}
-					],
-					"sid": 105003639851130
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-destroyed",
-							"objectClass": "Sprite",
-							"sid": 472762230543117
-						}
-					],
-					"actions": [
-						{
-							"id": "restart-layout",
+							"id": "every-x-seconds",
 							"objectClass": "System",
-							"sid": 182769971909285
-						}
-					],
-					"sid": 918056125778046
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+							"sid": 559148590098888,
+							"parameters": {
+								"interval-seconds": "0.2"
+							}
+						},
 						{
-							"id": "is-outside-layout",
-							"objectClass": "Sprite",
-							"sid": 141388262480414
+							"id": "compare-width",
+							"objectClass": "StaminaBar",
+							"sid": 862158329867682,
+							"parameters": {
+								"comparison": 4,
+								"width": "0"
+							}
 						}
 					],
 					"actions": [
 						{
-							"id": "restart-layout",
-							"objectClass": "System",
-							"sid": 433159284349848
+							"id": "set-width",
+							"objectClass": "StaminaBar",
+							"sid": 478891350415826,
+							"parameters": {
+								"width": "StaminaBar.Width-1"
+							}
 						}
 					],
-					"sid": 791054379559794
+					"sid": 617279680642222,
+					"disabled": true
 				}
 			],
-			"sid": 111643264608883
+			"sid": 526151782915520
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 699465596793857,
+					"parameters": {
+						"key": 18
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 636136449379383,
+					"parameters": {
+						"animation": "\"Shield\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 915966334969001
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "Sprite",
+					"sid": 778281217240672,
+					"parameters": {
+						"animation": "\"Shield\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 941717042488980,
+					"parameters": {
+						"animation": "\"Shield Up\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 172152237649788
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-released",
+					"objectClass": "Keyboard",
+					"sid": 409688726968003,
+					"parameters": {
+						"key": 18
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 909212272918843,
+					"parameters": {
+						"animation": "\"Shield Down\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 984022545549457
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "Sprite",
+					"sid": 287839751999461,
+					"parameters": {
+						"animation": "\"Shield Down\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 230792886248410,
+					"parameters": {
+						"animation": "\"Idle\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 515815454197657
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 298838800450910,
+					"parameters": {
+						"animation": "\"Parry\""
+					}
+				},
+				{
+					"id": "compare-width",
+					"objectClass": "StaminaBar",
+					"sid": 618271774883414,
+					"parameters": {
+						"comparison": 0,
+						"width": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 512473046427886,
+					"parameters": {
+						"variable": "State",
+						"value": "\"Advantage\""
+					}
+				}
+			],
+			"sid": 510862726867198
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 755573533814295,
+					"parameters": {
+						"animation": "\"Parry 2\""
+					}
+				},
+				{
+					"id": "compare-width",
+					"objectClass": "StaminaBar",
+					"sid": 737111547716965,
+					"parameters": {
+						"comparison": 0,
+						"width": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 941490736895285,
+					"parameters": {
+						"variable": "State",
+						"value": "\"Advantage\""
+					}
+				}
+			],
+			"sid": 983411519127841
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 994154905661677,
+					"parameters": {
+						"variable": "State",
+						"comparison": 0,
+						"value": "\"Advantage\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Boss",
+					"sid": 934964997051017,
+					"parameters": {
+						"animation": "\"Counter\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 727812196111294
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 641427644107341,
+					"parameters": {
+						"animation": "\"Counter\""
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 223756637789795,
+					"parameters": {
+						"comparison": 0,
+						"number": "3"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "Boss",
+					"sid": 556256316886915,
+					"behaviorType": "Solid",
+					"parameters": {
+						"state": "disabled"
+					}
+				}
+			],
+			"sid": 931779235883220
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Counter",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 315110631256961,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 340315803519792,
+							"parameters": {
+								"comparison": 0,
+								"number": "10"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 904518619059134,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 310013527278485,
+							"parameters": {
+								"x": "(Sprite.X+ Boss.X)/2",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 797416091074437
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 110312316958817,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 707129612805202,
+							"parameters": {
+								"comparison": 0,
+								"number": "11"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 711313494188751,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 464735649697425,
+							"parameters": {
+								"x": "Sprite.X",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 613199486148137
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 937025141855126,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 435291875927814,
+							"parameters": {
+								"comparison": 0,
+								"number": "12"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 748346347284341,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 832618906862524,
+							"parameters": {
+								"x": "Sprite.X-200",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 364651470913345
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 566804484804899,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 364351873430746,
+							"parameters": {
+								"comparison": 0,
+								"number": "13"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 852601687968508,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 902319667868820,
+							"parameters": {
+								"x": "Boss.X-1",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 785527045336802
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 293288078997931,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 661694625002391,
+							"parameters": {
+								"comparison": 0,
+								"number": "14"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 389327091989232,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 274017685225915,
+							"parameters": {
+								"x": "Boss.X-0.5",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 206662359878827
+				}
+			],
+			"sid": 318036765729587
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Counter2",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 361147982343106,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 991687811807532,
+							"parameters": {
+								"comparison": 0,
+								"number": "10"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 614399186719824
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 416936431711785,
+							"parameters": {
+								"x": "(Sprite.X+ Boss.X)/2",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 237950093082241
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 511122499626557,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 671274510731364,
+							"parameters": {
+								"comparison": 0,
+								"number": "11"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 846665622792554
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 751760465952479,
+							"parameters": {
+								"x": "Sprite.X",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 169452984448547
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 746772147032077,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 396215022776041,
+							"parameters": {
+								"comparison": 0,
+								"number": "12"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 260632589664432
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 330694709154871,
+							"parameters": {
+								"x": "Sprite.X+200",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 616556403007951
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 799760305124372,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 945271123647532,
+							"parameters": {
+								"comparison": 0,
+								"number": "13"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 562383373914767
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 297124865991923,
+							"parameters": {
+								"x": "Boss.X+1",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 712285961392623
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "Boss",
+							"sid": 362043815931209,
+							"parameters": {
+								"animation": "\"Counter\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "Boss",
+							"sid": 732104712442830,
+							"parameters": {
+								"comparison": 0,
+								"number": "14"
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 805037355679972
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Boss",
+							"sid": 752661331661141,
+							"parameters": {
+								"x": "Boss.X+0.5",
+								"y": "Boss.Y"
+							}
+						}
+					],
+					"sid": 436235581323792
+				}
+			],
+			"sid": 444652384894090
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "Boss",
+					"sid": 749900496813908,
+					"parameters": {
+						"animation": "\"Counter\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 496987465182759,
+					"parameters": {
+						"variable": "State",
+						"value": "\"Aggressive\""
+					}
+				}
+			],
+			"sid": 251487516927099,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-mirrored",
+							"objectClass": "Boss",
+							"sid": 588679783231145,
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 544996919015086,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 860190940707389,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "Boss.X -300"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 888388472024382,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Hostile\""
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Boss",
+									"sid": 297698049444339,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 783840925137166
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 900848216353006
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 948206434275677,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Aggressive\""
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Boss",
+									"sid": 464774667711152,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 621979219222565
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 513827963178843
+						}
+					],
+					"actions": [],
+					"sid": 387601864120403,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Sprite",
+									"sid": 823064793514688,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "Boss.X +300"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 434418221975873,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Hostile\""
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Boss",
+									"sid": 710547550310390,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 761055090798935
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 503500527511227
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 107980885050408,
+									"parameters": {
+										"variable": "State",
+										"value": "\"Aggressive\""
+									}
+								},
+								{
+									"id": "set-mirrored",
+									"objectClass": "Boss",
+									"sid": 654276222945602,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 907061838012685
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 339003227901515,
+					"parameters": {
+						"key": 18
+					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 323770287039225,
+					"parameters": {
+						"animation": "\"Slashes\""
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 882819425644679,
+					"parameters": {
+						"comparison": 5,
+						"number": "8"
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 415598224648186,
+					"parameters": {
+						"comparison": 3,
+						"number": "10"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 807155705371365,
+					"parameters": {
+						"animation": "\"Debug\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 911209577446544,
+					"parameters": {
+						"variable": "Counters",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "CounterBar",
+					"sid": 744208265277095,
+					"parameters": {
+						"width": "CounterBar.Width+10"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "MainCharacterBar",
+					"sid": 375915817482834,
+					"parameters": {
+						"width": "MainCharacterBar.Width+0.5"
+					}
+				}
+			],
+			"sid": 642638078414887
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 216310556421560,
+					"parameters": {
+						"key": 18
+					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 769426775622790,
+					"parameters": {
+						"animation": "\"Slashes\""
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 359197336432277,
+					"parameters": {
+						"comparison": 5,
+						"number": "14"
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 164440285399902,
+					"parameters": {
+						"comparison": 3,
+						"number": "16"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 994366899262159,
+					"parameters": {
+						"animation": "\"Debug\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 745551797151506,
+					"parameters": {
+						"variable": "Counters",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "CounterBar",
+					"sid": 772903839671765,
+					"parameters": {
+						"width": "CounterBar.Width+10"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "MainCharacterBar",
+					"sid": 403474994323576,
+					"parameters": {
+						"width": "MainCharacterBar.Width+0.5"
+					}
+				}
+			],
+			"sid": 694605945348638
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 372574724141525,
+					"parameters": {
+						"key": 18
+					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 186547339371187,
+					"parameters": {
+						"animation": "\"Slashes\""
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 637386008591391,
+					"parameters": {
+						"comparison": 5,
+						"number": "20"
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 371649616189884,
+					"parameters": {
+						"comparison": 3,
+						"number": "22"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite",
+					"sid": 561221105767115,
+					"parameters": {
+						"animation": "\"Debug\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 439102929901910,
+					"parameters": {
+						"variable": "Counters",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "CounterBar",
+					"sid": 259277677937210,
+					"parameters": {
+						"width": "CounterBar.Width+10"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "MainCharacterBar",
+					"sid": 876966151032594,
+					"parameters": {
+						"width": "MainCharacterBar.Width+0.5"
+					}
+				}
+			],
+			"sid": 132982452287062
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 776885382399412,
+					"parameters": {
+						"variable": "Counters",
+						"comparison": 0,
+						"value": "3"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 642422956292643,
+					"parameters": {
+						"variable": "State",
+						"comparison": 0,
+						"value": "\"Aggressive\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Boss",
+					"sid": 727717069108412,
+					"parameters": {
+						"animation": "\"Fourth Slash\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 203539978804018,
+					"parameters": {
+						"variable": "State",
+						"value": "\"Desperate\""
+					}
+				}
+			],
+			"sid": 117401151315429
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "Boss",
+					"sid": 123913849132342,
+					"parameters": {
+						"animation": "\"Fourth Slash\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-width",
+					"objectClass": "CounterBar",
+					"sid": 917946434478323,
+					"parameters": {
+						"width": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 160859274539860,
+					"parameters": {
+						"variable": "Counters",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 521671847720249,
+					"parameters": {
+						"variable": "State",
+						"value": "\"Aggressive\""
+					}
+				}
+			],
+			"sid": 926927283555263
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Debug",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 318003389735406
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "FPSMonitor",
+							"sid": 943052001880607,
+							"parameters": {
+								"text": "fps"
+							}
+						}
+					],
+					"sid": 147702989872663
+				}
+			],
+			"sid": 465722061486435
 		}
 	],
-	"sid": 909972086833767
+	"sid": 504140348687039
 }
