@@ -1,0 +1,45 @@
+{
+	"name": "Event sheet 2",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 342205600026754
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Video",
+					"sid": 287575979285021
+				}
+			],
+			"sid": 295001873618559
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "has-ended",
+					"objectClass": "Video",
+					"sid": 386379402010609
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 829868687402543,
+					"parameters": {
+						"layout": "Level"
+					}
+				}
+			],
+			"sid": 630006246678063
+		}
+	],
+	"sid": 297423312573638
+}

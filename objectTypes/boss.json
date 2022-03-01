@@ -29,6 +29,11 @@
 			"behaviorId": "Pathfinding",
 			"name": "Pathfinding",
 			"sid": 344339498210802
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 229164026352460
 		}
 	],
 	"effectTypes": [],

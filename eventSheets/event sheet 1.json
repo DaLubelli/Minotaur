@@ -3,6 +3,16 @@
 	"events": [
 		{
 			"eventType": "variable",
+			"name": "Character",
+			"type": "string",
+			"initialValue": "Normal",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 506084606739855
+		},
+		{
+			"eventType": "variable",
 			"name": "State",
 			"type": "string",
 			"initialValue": "Hostile",
@@ -385,6 +395,15 @@
 										"animation": "\"Attack 1\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 341226509385521,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Attack\""
+									}
 								}
 							],
 							"sid": 101068435571311
@@ -398,6 +417,16 @@
 									"sid": 793740617104738,
 									"parameters": {
 										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 757038835989454,
+									"parameters": {
+										"variable": "Character",
+										"comparison": 0,
+										"value": "\"Attack\""
 									}
 								},
 								{
@@ -417,6 +446,15 @@
 										"animation": "\"Idle\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 356393048253785,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
+									}
 								}
 							],
 							"sid": 949181087486320
@@ -430,6 +468,16 @@
 									"sid": 841623706349401,
 									"parameters": {
 										"animation": "\"Attack 1\""
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 999773729522491,
+									"parameters": {
+										"variable": "Character",
+										"comparison": 0,
+										"value": "\"Attack\""
 									}
 								},
 								{
@@ -447,6 +495,15 @@
 									"parameters": {
 										"animation": "\"Walk\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 880026519367321,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
 									}
 								}
 							],
@@ -490,6 +547,15 @@
 										"animation": "\"Attack 2\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 569270288342261,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Attack\""
+									}
 								}
 							],
 							"sid": 159814867149782
@@ -503,6 +569,16 @@
 									"sid": 699085204751567,
 									"parameters": {
 										"animation": "\"Attack 2\""
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 934487138836324,
+									"parameters": {
+										"variable": "Character",
+										"comparison": 0,
+										"value": "\"Attack\""
 									}
 								},
 								{
@@ -522,6 +598,15 @@
 										"animation": "\"Idle\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 963748321473772,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
+									}
 								}
 							],
 							"sid": 848412996479164
@@ -535,6 +620,16 @@
 									"sid": 842967509198648,
 									"parameters": {
 										"animation": "\"Attack 2\""
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 250414012171224,
+									"parameters": {
+										"variable": "Character",
+										"comparison": 0,
+										"value": "\"Attack\""
 									}
 								},
 								{
@@ -552,6 +647,15 @@
 									"parameters": {
 										"animation": "\"Walk\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 842581525277248,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
 									}
 								}
 							],
@@ -628,6 +732,15 @@
 										"x": "Sprite.X-100",
 										"y": "Boss.Y"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 609540153733387,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Defense\""
+									}
 								}
 							],
 							"sid": 195101391231296
@@ -694,6 +807,15 @@
 										"x": "Sprite.X+100",
 										"y": "Boss.Y"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 343040796849772,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Defense\""
+									}
 								}
 							],
 							"sid": 470530202574650
@@ -758,6 +880,15 @@
 									"parameters": {
 										"x": "Sprite.X-100",
 										"y": "Boss.Y"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 431185128665312,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Defense\""
 									}
 								}
 							],
@@ -825,6 +956,15 @@
 										"x": "Sprite.X+100",
 										"y": "Boss.Y"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 814455582128039,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Defense\""
+									}
 								}
 							],
 							"sid": 547788250770590
@@ -889,6 +1029,15 @@
 									"parameters": {
 										"x": "Sprite.X-100",
 										"y": "Boss.Y"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 320500042932012,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Defense\""
 									}
 								}
 							],
@@ -955,6 +1104,15 @@
 									"parameters": {
 										"x": "Sprite.X+100",
 										"y": "Boss.Y"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 212150636062143,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Defense\""
 									}
 								}
 							],
@@ -1129,6 +1287,15 @@
 										"animation": "\"Idle\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 828101536448448,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
+									}
 								}
 							],
 							"sid": 880278955790917
@@ -1160,6 +1327,15 @@
 									"parameters": {
 										"animation": "\"Idle\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 506952303165598,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
 									}
 								}
 							],
@@ -1193,6 +1369,15 @@
 										"animation": "\"Idle\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 687048010629770,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
+									}
 								}
 							],
 							"sid": 748224972400903
@@ -1223,6 +1408,15 @@
 									"parameters": {
 										"animation": "\"Walk\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 547966866733204,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
 									}
 								}
 							],
@@ -1255,6 +1449,15 @@
 										"animation": "\"Walk\"",
 										"from": "beginning"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 735547447357344,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
+									}
 								}
 							],
 							"sid": 529256135952276
@@ -1285,6 +1488,15 @@
 									"parameters": {
 										"animation": "\"Walk\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 246498500447847,
+									"parameters": {
+										"variable": "Character",
+										"value": "\"Normal\""
 									}
 								}
 							],
@@ -2188,6 +2400,10 @@
 								}
 							],
 							"sid": 849628295602149
+						},
+						{
+							"eventType": "comment",
+							"text": "In base al frame-rate, il boss durante questa mossa potrebbe essere troppo veloce o troppo lento nei movimenti. In caso di anomalia disattivare uno dei gruppi e riattivare l'altro. Sono praticamente lo stesso gruppo, cambiano solo i parametri."
 						},
 						{
 							"eventType": "group",
@@ -5806,7 +6022,7 @@
 				{
 					"id": "set-animation",
 					"objectClass": "Boss",
-					"sid": 727717069108412,
+					"sid": 597600794029476,
 					"parameters": {
 						"animation": "\"Fourth Slash\"",
 						"from": "beginning"
@@ -5893,9 +6109,141 @@
 						}
 					],
 					"sid": 147702989872663
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 687138590854798,
+							"parameters": {
+								"key": 38
+							}
+						},
+						{
+							"id": "is-visible",
+							"objectClass": "Commands",
+							"sid": 503974369086396
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "Commands",
+							"sid": 603014740620020,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 874936171142532
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 462491667564702,
+							"parameters": {
+								"key": 40
+							}
+						},
+						{
+							"id": "is-visible",
+							"objectClass": "Commands",
+							"sid": 609643243026437,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "Commands",
+							"sid": 454693336695295,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 242922454623092
 				}
 			],
 			"sid": 465722061486435
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Game Over",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 745219954031392,
+							"parameters": {
+								"comparison": 3,
+								"width": "0.1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "flash",
+							"objectClass": "Sprite",
+							"sid": 652639345855177,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.0"
+							}
+						}
+					],
+					"sid": 957221234426529
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-flash-ended",
+							"objectClass": "Sprite",
+							"sid": 458554933223176,
+							"behaviorType": "Flash"
+						}
+					],
+					"actions": [
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 991720823531301
+						}
+					],
+					"sid": 135039949327752
+				}
+			],
+			"sid": 182141129287254
+		},
+		{
+			"eventType": "comment",
+			"text": "Bachi: non spingersi troppo ai bordi della mappa, o si perderà completamente traccia della posizione dei personaggi e in casi estremi che uno di loro cada di sotto. Il background è immobile quindi l'azione si svolgerà all'interno di un'inquadratura fissa. Ho provato ad inserire muri invisibili ai lati, ma i pesonaggi hanno finito per saltarci sopra e in alcuni casi si sono verificati dei clipping, perciò ho finito per rimuoverli."
+		},
+		{
+			"eventType": "comment",
+			"text": "A volte il frame-rate farà impazzire i parametri dell'animazione di schivata del boss, così come la barra della vita e quella della stamina. In caso succeda,. cercare l'istruzione nella Event Sheet e invertire i gruppi"
+		},
+		{
+			"eventType": "comment",
+			"text": "Attraverso diverse combinazioni dei comandi, può capitare che le animazioni non si comportino come dovrebbero"
+		},
+		{
+			"eventType": "comment",
+			"text": "Il gioco serve essenzialmente a sperimentare le meccaniche. Di conseguenza alcune funzioni mancano. Tipo che è possibile perdere ma non vincere, non c'è un effettivo bilanciamento e che alcune animazioni manchino"
 		}
 	],
 	"sid": 504140348687039
