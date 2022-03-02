@@ -39,6 +39,54 @@
 				}
 			],
 			"sid": 630006246678063
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 261036066446121,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 191029256694019,
+					"parameters": {
+						"layout": "Level"
+					}
+				}
+			],
+			"sid": 930607877442645
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 683521791864613,
+					"parameters": {
+						"key": 90
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 858434917372563,
+					"parameters": {
+						"layout": "Cutscene"
+					}
+				}
+			],
+			"sid": 371177528280762
 		}
 	],
 	"sid": 297423312573638

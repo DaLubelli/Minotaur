@@ -47,6 +47,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Camera3D",
+			"name": "3D camera",
+			"author": "Scirra",
+			"version": "r285",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Platform",
 			"name": "Platform",
@@ -101,7 +109,7 @@
 			"Sprite",
 			"Boss",
 			"Keyboard",
-			"Pavimento",
+			"InvisibleFloor",
 			"EmptyBar",
 			"StaminaBar",
 			"CounterBar",
@@ -110,7 +118,12 @@
 			"Background",
 			"FPSMonitor",
 			"Video",
-			"Commands"
+			"Commands",
+			"3DCamera",
+			"Text",
+			"Sprite2",
+			"Text2",
+			"Sprite3"
 		],
 		"subfolders": []
 	},
@@ -118,7 +131,9 @@
 	"containers": [],
 	"families": {
 		"items": [
-			"LifeBar"
+			"LifeBar",
+			"Characters",
+			"Texts"
 		],
 		"subfolders": []
 	},
@@ -126,7 +141,8 @@
 		"items": [
 			"Level",
 			"Cutscene",
-			"Layout 1"
+			"Winning",
+			"Losing"
 		],
 		"subfolders": []
 	},

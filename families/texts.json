@@ -1,0 +1,12 @@
+{
+	"name": "Texts",
+	"plugin-id": "Text",
+	"sid": 936284662306729,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Commands",
+		"FPSMonitor"
+	]
+}

@@ -6046,9 +6046,9 @@
 				{
 					"id": "on-animation-finished",
 					"objectClass": "Boss",
-					"sid": 123913849132342,
+					"sid": 133388046491730,
 					"parameters": {
-						"animation": "\"Fourth Slash\""
+						"animation": "\"Slashes\""
 					}
 				}
 			],
@@ -6069,18 +6069,111 @@
 						"variable": "Counters",
 						"value": "0"
 					}
+				}
+			],
+			"sid": 926927283555263
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "Boss",
+					"sid": 549123021834464,
+					"parameters": {
+						"animation": "\"Fourth Slash\""
+					}
 				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 121684147969539,
+					"parameters": {
+						"variable": "Counters",
+						"comparison": 0,
+						"value": "3"
+					}
+				}
+			],
+			"actions": [
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 521671847720249,
+					"sid": 830236773975067,
 					"parameters": {
 						"variable": "State",
 						"value": "\"Aggressive\""
 					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "CounterBar",
+					"sid": 468689947615539,
+					"parameters": {
+						"width": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 331479608037390,
+					"parameters": {
+						"variable": "Counters",
+						"value": "0"
+					}
 				}
 			],
-			"sid": 926927283555263
+			"sid": 505287343513880
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 690171257636135,
+					"parameters": {
+						"key": 18
+					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Boss",
+					"sid": 716043373516305,
+					"parameters": {
+						"animation": "\"Fourth Slash\""
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 987062836821186,
+					"parameters": {
+						"comparison": 5,
+						"number": "10"
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "Boss",
+					"sid": 403939146232920,
+					"parameters": {
+						"comparison": 3,
+						"number": "12"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-width",
+					"objectClass": "MainCharacterBar",
+					"sid": 742290795511373,
+					"parameters": {
+						"width": "MainCharacterBar.Width+30"
+					}
+				}
+			],
+			"sid": 640605475607090
 		},
 		{
 			"eventType": "group",
@@ -6123,15 +6216,15 @@
 						},
 						{
 							"id": "is-visible",
-							"objectClass": "Commands",
-							"sid": 503974369086396
+							"objectClass": "Texts",
+							"sid": 273385867154675
 						}
 					],
 					"actions": [
 						{
 							"id": "set-visible",
-							"objectClass": "Commands",
-							"sid": 603014740620020,
+							"objectClass": "Texts",
+							"sid": 681387229171020,
 							"parameters": {
 								"visibility": "invisible"
 							}
@@ -6152,16 +6245,16 @@
 						},
 						{
 							"id": "is-visible",
-							"objectClass": "Commands",
-							"sid": 609643243026437,
+							"objectClass": "Texts",
+							"sid": 292421109294689,
 							"isInverted": true
 						}
 					],
 					"actions": [
 						{
 							"id": "set-visible",
-							"objectClass": "Commands",
-							"sid": 454693336695295,
+							"objectClass": "Texts",
+							"sid": 457594041015572,
 							"parameters": {
 								"visibility": "visible"
 							}
@@ -6219,15 +6312,166 @@
 					],
 					"actions": [
 						{
-							"id": "restart-layout",
+							"id": "go-to-layout",
 							"objectClass": "System",
-							"sid": 991720823531301
+							"sid": 911189259304054,
+							"parameters": {
+								"layout": "Losing"
+							}
 						}
 					],
 					"sid": 135039949327752
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-width",
+							"objectClass": "MainCharacterBar",
+							"sid": 848181988556247,
+							"parameters": {
+								"comparison": 5,
+								"width": "BossBar.Width"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "flash",
+							"objectClass": "Boss",
+							"sid": 194624438065268,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.0"
+							}
+						}
+					],
+					"sid": 797326166210637
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-flash-ended",
+							"objectClass": "Boss",
+							"sid": 422397374196345,
+							"behaviorType": "Flash"
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 344669876375171,
+							"parameters": {
+								"layout": "Winning"
+							}
+						}
+					],
+					"sid": 979098073278946
 				}
 			],
 			"sid": 182141129287254
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Heal",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 895529156604315,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 460267305735789,
+							"parameters": {
+								"variable": "Character",
+								"comparison": 0,
+								"value": "\"Normal\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Sprite",
+							"sid": 827346861208492,
+							"parameters": {
+								"animation": "\"Debug\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 518563529837215,
+							"parameters": {
+								"variable": "Character",
+								"value": "\"Heal\""
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "MainCharacterBar",
+							"sid": 314715262397056,
+							"parameters": {
+								"width": "167",
+								"height": "16"
+							}
+						}
+					],
+					"sid": 601122871679918
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "Sprite",
+							"sid": 725032675027091,
+							"parameters": {
+								"animation": "\"Debug\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 421522615740808,
+							"parameters": {
+								"variable": "Character",
+								"comparison": 0,
+								"value": "\"Heal\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 210850171485764,
+							"parameters": {
+								"variable": "Character",
+								"value": "\"Normal\""
+							}
+						}
+					],
+					"sid": 652313831330323
+				}
+			],
+			"sid": 691684082779042
 		},
 		{
 			"eventType": "comment",
